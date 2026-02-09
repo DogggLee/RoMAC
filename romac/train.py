@@ -1,9 +1,15 @@
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
 import torch
 from torch.utils.tensorboard import SummaryWriter
+
+if __package__ is None:
+    repo_root = Path(__file__).resolve().parents[1]
+    if str(repo_root) not in sys.path:
+        sys.path.insert(0, str(repo_root))
 
 from romac.algorithms import MAPPOTrainer
 from romac.algorithms.mappo import PPOTrajectory
@@ -12,7 +18,8 @@ from romac.utils import load_config, prepare_run_dir
 
 
 def main() -> None:
-    config = load_config("romac/config.yaml")
+    config_path = Path(__file__).resolve().with_name("config.yaml")
+    config = load_config(str(config_path))
     seed = int(config["seed"])
     np.random.seed(seed)
     torch.manual_seed(seed)

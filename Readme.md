@@ -15,6 +15,12 @@ setup.
 python -m romac.train
 ```
 
+Or run the script directly:
+
+```bash
+python romac/train.py
+```
+
 Outputs, checkpoints, and tensorboard logs are written to a new folder under `outputs/`.
 
 ## Configuration
