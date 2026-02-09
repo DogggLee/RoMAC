@@ -72,15 +72,8 @@ class MAPPOAgent:
 
 
 class MAPPOTrainer:
-    def __init__(
-        self,
-        config: Dict,
-        model_config: Dict,
-        obs_dims: Dict[str, int],
-        action_dim: int,
-        device: str,
-    ):
-        hidden_size = int(model_config["hidden_size"])
+    def __init__(self, config: Dict, obs_dims: Dict[str, int], action_dim: int, device: str):
+        hidden_size = int(config["hidden_size"])
         self.role_agents = {
             "hunter": MAPPOAgent(obs_dims["hunter"], action_dim, hidden_size, device),
             "blocker": MAPPOAgent(obs_dims["blocker"], action_dim, hidden_size, device),
