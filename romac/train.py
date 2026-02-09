@@ -38,7 +38,13 @@ def main() -> None:
     writer = SummaryWriter(log_dir=run_dir / "tensorboard")
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    trainer = MAPPOTrainer(config["training"], obs_dims, config["model"]["action_dim"], device)
+    trainer = MAPPOTrainer(
+        config["training"],
+        config["model"],
+        obs_dims,
+        config["model"]["action_dim"],
+        device,
+    )
 
     total_episodes = int(config["training"]["total_episodes"])
     log_interval = int(config["training"]["log_interval"])
