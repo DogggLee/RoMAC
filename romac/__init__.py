@@ -1,0 +1,1 @@
+"""RoMAC package."""
