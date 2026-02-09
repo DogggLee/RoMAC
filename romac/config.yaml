@@ -1,0 +1,39 @@
+seed: 42
+output_dir: outputs
+run_name: mpe_pursuit
+
+env:
+  map_size: 10.0
+  max_steps: 200
+  capture_distance: 0.6
+  capture_hold_steps: 5
+  hunter_speed: 1.8
+  blocker_speed: 1.2
+  target_speed: 1.4
+  hunter_perception: 3.0
+  blocker_perception: 5.0
+  target_perception: 3.5
+  num_hunters: 2
+  num_blockers: 2
+  num_targets: 1
+  max_hunters: 4
+  max_blockers: 4
+
+training:
+  total_episodes: 5
+  gamma: 0.99
+  gae_lambda: 0.95
+  ppo_epochs: 4
+  clip_ratio: 0.2
+  actor_lr: 0.0003
+  critic_lr: 0.0007
+  entropy_coef: 0.01
+  value_coef: 0.5
+  max_grad_norm: 0.5
+  batch_size: 128
+  log_interval: 1
+  checkpoint_interval: 2
+
+model:
+  hidden_size: 128
+  action_dim: 2
